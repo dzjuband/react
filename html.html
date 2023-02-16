@@ -34,6 +34,8 @@
         ReactDOM.render( list, document.getElementById('react-container2'));
 
         var items22 = ['1','2','3','5','78','9'];
+
+        //є три типи компонентів: 1) createСlass, 2)js класи 3) React.Component  
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         let ul =  React.createElement("ul", 
                                       null, 
@@ -64,14 +66,24 @@
             displayName : "IngridientLIST2",
             render(){
                 return React.createElement("ul", {id:'test2222', className:'new_class'}, 
-                        this.props.items22.map((item,i) =>{React.createElement("li", {key:i}, item);} ) //this.props тут використовуєємо, як вхідні дані з цього рядка  ReactDOM.render(React.createElement(IngridientLIST2, {items22}, null), document.getElementById('react-container5'));
+                        this.props.items22.map((item,i) =>{return React.createElement("li", {key:i}, item);} ) //this.props тут використовуєємо, як вхідні дані з цього рядка  ReactDOM.render(React.createElement(IngridientLIST2, {items22}, null), document.getElementById('react-container5'));
                         );
             }
         })
-        console.log(React.createElement(IngridientLIST2, {items22}, null))
         
-        //ReactDOM.render(React.createElement(IngridientLIST2, {items22}, null), document.getElementById('react-container5'));//вказуємо як параметр для дотупу через this.props
+        ReactDOM.render(React.createElement(IngridientLIST2, {items22}, null), document.getElementById('react-container5'));//вказуємо як параметр для дотупу через this.props
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var items222 = ['112','2123','3123','51231','7831231','9123'];
+        class ClassA extends React.Component{
 
+            render(){
+                return React.createElement("ul", {id:'test2222', className:'new_class'}, 
+                        this.props.items222.map((item,i) =>{return React.createElement("li", {key:i}, item);} ) //this.props тут використовуєємо, як вхідні дані з цього рядка  ReactDOM.render(React.createElement(IngridientLIST2, {items22}, null), document.getElementById('react-container5'));
+                        );
+            }
+        }
+        
+        ReactDOM.render(React.createElement(ClassA, {items222}, null), document.getElementById('react-container6'));//вказуємо як параметр для дотупу через this.props
     </script>
 </body>
 </html>
