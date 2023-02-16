@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="react-container"></div>
+    <div id="react-container2"></div>
+
+    <div id="react-container3"></div>
+
+    <div id="react-container4"></div>
+
+    <div id="react-container5"></div>
+
+    <div id="react-container6"></div>
+    <script src="https://unpkg.com/react@15.4.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.js"></script>
+
+    <script>
+        let item = React.createElement("h1", null, '123123  123123123');//1 - що за елемент, 2 - атрибути, 3- дочірні елементи 
+        ReactDOM.render(item, document.getElementById('react-container'));//записати його на сторінку 1 - що хочемо написати, 2 - куди саме
+       
+       let list = React.createElement("ul", {id:'test2', className:'new_class'}, 
+        React.createElement("ol", null, '1'),
+        React.createElement("ol", null, '2'),
+        React.createElement("ol", null, '3'),
+        React.createElement("ol", null, '4')
+        );
+
+        ReactDOM.render( list, document.getElementById('react-container2'));
+
+        var items22 = ['1','2','3','5','78','9'];
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        let ul =  React.createElement("ul", 
+                                      null, 
+                                      items22.map((item,i) => React.createElement("li", {key:i}, item))/*якщо використовуємо map, то необхдіно вставляти {key:i} замість null, бо отримаємо помилку */
+                );
+
+        ReactDOM.render(ul, document.getElementById('react-container3'));
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //створення компонентів (шаблони або класи для повторного використання)
+        const IngridientLIST = React.createClass({
+            displayName : "IngridientLIST",
+            render(){
+                return React.createElement("ul", {id:'test2222', className:'new_class'}, 
+                            React.createElement("ol", null, '1'),
+                            React.createElement("ol", null, '2'),
+                            React.createElement("ol", null, '3'),
+                            React.createElement("ol", null, '4')        
+                       );
+            }
+        })
+
+        const listItems = React.createElement(IngridientLIST, null, null);
+        ReactDOM.render(listItems, document.getElementById('react-container4'));
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        const IngridientLIST2 = React.createClass({
+            displayName : "IngridientLIST2",
+            render(){
+                return React.createElement("ul", {id:'test2222', className:'new_class'}, 
+                        this.props.items22.map((item,i) =>{React.createElement("li", {key:i}, item);} ) //this.props тут використовуєємо, як вхідні дані з цього рядка  ReactDOM.render(React.createElement(IngridientLIST2, {items22}, null), document.getElementById('react-container5'));
+                        );
+            }
+        })
+        console.log(React.createElement(IngridientLIST2, {items22}, null))
+        
+        //ReactDOM.render(React.createElement(IngridientLIST2, {items22}, null), document.getElementById('react-container5'));//вказуємо як параметр для дотупу через this.props
+
+    </script>
+</body>
+</html>
