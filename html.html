@@ -17,6 +17,8 @@
     <div id="react-container5"></div>
 
     <div id="react-container6"></div>
+
+    <div id="react-container7"></div>
     <script src="https://unpkg.com/react@15.4.2/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.js"></script>
 
@@ -84,6 +86,15 @@ var items222 = ['112','2123','3123','51231','7831231','9123'];
         }
         
         ReactDOM.render(React.createElement(ClassA, {items222}, null), document.getElementById('react-container6'));//вказуємо як параметр для дотупу через this.props
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//формлення як функції звичайної
+        const ccc = rrr => {
+           return React.createElement('ul', {className:"qweasd"}, 
+            rrr.map((element, i) => React.createElement('li', {key:i}, element)))
+        }
+
+        ReactDOM.render(ccc(items222), document.getElementById('react-container7'));//вказуємо як параметр для дотупу через this.props
     </script>
 </body>
 </html>
