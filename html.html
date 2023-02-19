@@ -23,8 +23,13 @@
     <div id="react-container8"></div>
 
     <div id="react-container9"></div>
+
+    <div id="react-container10"></div>
+
+    <div id="app"></div>
     <script src="https://unpkg.com/react@15.4.2/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script><!--необхідно для компіляції babel коду-->
 
 <script>
         let item = React.createElement("h1", null, '123123  123123123');//1 - що за елемент, 2 - атрибути, 3- дочірні елементи 
@@ -112,7 +117,30 @@ let ul3 = React.DOM.ul({className:'d2222'},
     );
 
 ReactDOM.render(ul3, document.querySelector('#react-container9'));
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//створення елементів за домопогою методів createFactory метод аналогічний createElement
+
+const {render} = ReactDOM;
+
+const IngredientsList = ({list2}) =>
+        React.createElement('ul',null, list2.map((item,i)=>React.createElement('li', {key:i}, item)))
+
+const ingredients1  = React.createFactory(IngredientsList);
+
+const list2 = [1,2,3,4,5,6,78,99,123,123];
+
+render(IngredientsList({list2}), document.querySelector('#react-container10'))
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 </script>
+
+<script type="text/babel">//необхідно для використання babel форми запису
+ReactDOM.render(
+        <h1>Hello React</h1>,//jsx запис елементу
+        document.getElementById("app")
+    )
+</script>
+
 </body>
 </html>
