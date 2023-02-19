@@ -19,12 +19,16 @@
     <div id="react-container6"></div>
 
     <div id="react-container7"></div>
+
+    <div id="react-container8"></div>
+
+    <div id="react-container9"></div>
     <script src="https://unpkg.com/react@15.4.2/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.js"></script>
 
-    <script>
+<script>
         let item = React.createElement("h1", null, '123123  123123123');//1 - що за елемент, 2 - атрибути, 3- дочірні елементи 
-        ReactDOM.render(item, document.getElementById('react-container'));//записати його на сторінку 1 - що хочемо написати, 2 - куди саме
+        ReactDOM.render(item, document.getElementById('react-container'));//записати його на сторінку 1 - що хочемо написати, 2 - куди саме (батьківський елемент)
        
        let list = React.createElement("ul", {id:'test2', className:'new_class'}, 
         React.createElement("ol", null, '1'),
@@ -94,7 +98,21 @@ var items222 = ['112','2123','3123','51231','7831231','9123'];
             rrr.map((element, i) => React.createElement('li', {key:i}, element)))
         }
 
-        ReactDOM.render(ccc(items222), document.getElementById('react-container7'));//вказуємо як параметр для дотупу через this.props
-    </script>
+        ReactDOM.render(ccc(items222), document.getElementById('react-container7'));
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//фабрики - ще один спосіб для створення елементів. обєкт factory - спеціальний обєкт для створення нових елементів
+let h1 = React.DOM.h1(null, 'asdav asd');// 1) - необхідний для опису властивостей, 2) - контент
+
+let ddd =['a','s','f','h'];
+ReactDOM.render(h1, document.querySelector('#react-container8'));
+
+let ul3 = React.DOM.ul({className:'d2222'},
+        ddd.map((item, key) => React.DOM.li({key}, item))
+    );
+
+ReactDOM.render(ul3, document.querySelector('#react-container9'));
+
+</script>
 </body>
 </html>
